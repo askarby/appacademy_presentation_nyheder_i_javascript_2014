@@ -39,7 +39,6 @@
 	<body>
 
 		<div class="reveal">
-
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
@@ -152,6 +151,98 @@
                     </section>
                     
                     <section>
+                        <h2>Hvad er NodeJS</h2>
+                        <p><b>TODO:</b> Udvid med mere info!</p>
+                        <ul>
+                            <li>V8</li>
+                            <li>Opbygning (event-driven, async I/O)</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h2>Hvad er fordelene</h2>
+                        <p><b>TODO:</b> Udvid med mere info!</p>
+                        <ul>
+                            <li>Et sprog på frontend / backend</li>
+                            <li>Modulært</li>
+                            <li>Ingen typer (data skal oftest blot leveres, uden typer)</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h2>Hvad er ulemperne</h2>
+                        <p><b>TODO:</b> Udvid med mere info!</p>
+                        <ul>
+                            <li>Ingen typer (skal du bruge typer bør du vælge et andet sprog)</li>
+                            <li>Dårlig til tunge beregninger (hurtig til asynkron I/O)</li>
+                            <li>Udnytter ikke moderne CPU'er - single trådet</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h2>Simpel NodeJS webserver</h2>
+                        <p>Eksempel taget fra NodeJS' website</p>
+                        
+                        <pre><code data-trim>
+var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World\n');
+}).listen(1337, '127.0.0.1');
+console.log('Server running at http://127.0.0.1:1337/');
+                        </code></pre>
+                    </section>
+                    
+                    <section>
+                        <h2>Der er dog et problem</h2>
+                        <p>
+                            Vi skal selv inspicere <code>req</code>-objektet for informationer om URL, HTTP Method etc,
+                            ved bare 2 URL'er bliver det ulæseligt!
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h2>Grimmere end grimt</h2>
+                        <pre><code data-trim>
+var http = require('http');
+http.createServer(function (req, res) {
+  if (req.message.method === 'GET' && req.message.url === '/') { 
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello World\n');
+  } else if (req.message.method === 'GET && req.message.url === '/other') {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello Universe\n');
+  }
+}).listen(1337, '127.0.0.1');
+console.log('Server running at http://127.0.0.1:1337/');
+                        </code></pre>
+                    </section>
+                    
+                    <section>
+                        <h2>Løsningen på vores problem</h2>
+                        <p>Brug Express frameworket, og lav læsbar kode!</p>
+                        <pre><code data-trim>
+var express = require('express');
+var app = express();
+app.get('/', function (req, res) {
+  res.send('Hello World');
+});
+app.get('/other', function (req, res) {
+  res.send('Hello Universe');
+});
+var server = app.listen(1337, function () {
+  console.log('Example app listening at http:/127.0.0.1:1337/');
+});                        
+                        </code></pre>
+                    </section>
+                    
+                    <section>
+                        <h2>Flere muligheder</h2>
+                        <ul>
+                            <li>Middleware</li>
+                            <li>Serve statiske resourcer</li>
+                            <li>Templating engines (MVC)</li>
+                        </ul>
                     </section>
                 </section>
                 
