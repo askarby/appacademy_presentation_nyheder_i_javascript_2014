@@ -154,19 +154,56 @@
                         <h2>Hvad er NodeJS</h2>
                         <p><b>TODO:</b> Udvid med mere info!</p>
                         <ul>
-                            <li>V8</li>
+                            <li>Chrome's V8 JavaScript-motor</li>
                             <li>Opbygning (event-driven, async I/O)</li>
                         </ul>
                     </section>
                     
                     <section>
                         <h2>Hvad er fordelene</h2>
-                        <p><b>TODO:</b> Udvid med mere info!</p>
+                        <p>Vi tager dem lige en for en</p>
+                    </section>
+                    
+                    <section>
+                        <h2>Samme sprog på frontend og backend</h2>
+                        <p>Man kan som webudvikler ikke udelukke sig selv fra hverken</p>
                         <ul>
-                            <li>Et sprog på frontend / backend</li>
-                            <li>Modulært</li>
-                            <li>Ingen typer (data skal oftest blot leveres, uden typer)</li>
+                            <li>Frontend</li>
+                            <li>Backend</li>
                         </ul>
+                    </section>
+                    
+                    <section>
+                        <h2>Modularitet</h2>
+                        <p>Moduler eksporteres med <code>module.exports</code>:</p>
+                        <pre><code data-trim>
+module.exports = function messenger(name) {
+    return {
+        sayHello: function () {
+            console.log('Hello ' + name);
+        },
+        sayBye: function () {
+            console.log('Goodbye ' + name);
+        }
+    }
+};
+                        </code></pre>
+                    </section>
+                    
+                    <section>
+                        <h2>Modularitet - Forsat</h2>
+                        <p>Som så kan importeres vha. <code>require</code></p>
+                        <pre><code data-trim>
+var messenger = require('./messenger.js');
+messenger('Anders').sayHello();
+messenger('Anders').sayBye();
+                        </code></pre>
+                    </section>
+                    
+                    <section>
+                        <h2>NPM</h2>
+                        <p>En package-manager der gør hentning af biiblioteker ufatteligt nemt</p>
+                        
                     </section>
                     
                     <section>
@@ -209,7 +246,7 @@ http.createServer(function (req, res) {
   if (req.message.method === 'GET' && req.message.url === '/') { 
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end('Hello World\n');
-  } else if (req.message.method === 'GET && req.message.url === '/other') {
+  } else if (req.message.method === 'GET' && req.message.url === '/other') {
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end('Hello Universe\n');
   }
