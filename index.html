@@ -160,8 +160,8 @@
                     </section>
                     
                     <section>
-                        <h2>Hvad er fordelene</h2>
-                        <p>Vi tager dem lige en for en</p>
+                        <h2>Hvilke fordele er der</h2>
+                        <p>Vi tager dem lige en for en...</p>
                     </section>
                     
                     <section>
@@ -191,7 +191,7 @@ module.exports = function messenger(name) {
                     </section>
                     
                     <section>
-                        <h2>Modularitet - Forsat</h2>
+                        <h2>Modularitet - Import</h2>
                         <p>Som så kan importeres vha. <code>require</code></p>
                         <pre><code data-trim>
 var messenger = require('./messenger.js');
@@ -201,9 +201,17 @@ messenger('Anders').sayBye();
                     </section>
                     
                     <section>
+                        <h2>Modularitet - Look-up mekanisme</h2>
+                        <p><b>TODO:</b> Vis hvordan lookup laves (omtalt index.js, node_modules etc.) </p>
+                    </section>
+                    
+                    <section>
                         <h2>NPM</h2>
-                        <p>En package-manager der gør hentning af biiblioteker ufatteligt nemt</p>
-                        
+                        <ul>
+                            <li>Bruges sammen med før nævnte modul-mekanisme</li>
+                            <li class="fragment zoom-in"><code>npm install "pakkenavn"</code></li>
+                            <li class="fragment zoom-in">Pakker findes vha. NPM repository <a href="https://www.npmjs.org/">www.npmjs.org</a></li>
+                        </ul>
                     </section>
                     
                     <section>
