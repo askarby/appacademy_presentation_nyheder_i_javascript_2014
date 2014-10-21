@@ -157,7 +157,9 @@
                             <li>Sammenkoblet med C-libraries</li>
                         </ul>
                     </section>
-                    
+                </section>
+                
+                <section>
                     <section>
                         <h2>Hvilke fordele er der?</h2>
                         <p>Vi tager dem lige en for en...</p>
@@ -259,7 +261,9 @@ messenger('Anders').sayBye();
                             <li class="fragment zoom-in">Mange tilgængelige libraries</li>
                         </ul>
                     </section>
-                    
+                </section>
+                
+                <section>
                     <section>
                         <h2>Hvad er ulemperne?</h2>
                         <p>Dem tager vi også lige, en for en...</p>
@@ -285,15 +289,45 @@ messenger('Anders').sayBye();
                     
                     <section>
                         <h2>Multi-core CPU D.I.Y.</h2>
-                        <p><b>TODO:</b> En kerne, manuel (nginx / apache) round-robin mod flere node instanser, eksperimentel cluster modul.</p>
+                        <ul>
+                            <li>NodeJS kører kun med én enkelt tråd &rarr; det skalerer ikke</li>
+                            <li class="fragment zoom-in">Skalerer ikke til mange requests</li>
+                            <li class="fragment zoom-in">Manuel proxy / load balancer config foran NodeJS (<a href="http://nginx.org/">nginx</a> / <a href="http://httpd.apache.org/">Apache httpd</a>)</li>
+                            <li class="fragment zoom-in"><a href="https://github.com/Unitech/pm2">PM2</a> (process manager for Node, med indbygget load balancer)</li>
+                        </ul>
                     </section>
                     
                     <section>
                         <h2>Flying wedge anti-pattern</h2>
-                        <p>Callbacks</p>
-                        <p><b>TODO:</b> http://technosophos.com/2011/10/29/javascript-nodejs-and-flying-wedge-anti-pattern.html</p>
+                        <p>Callback-baserede API'er</p>
+                        <pre><code data-trim>
+function processData(initial) {
+    this.outer(initial, function (err, data) {
+        // Work with data...
+    });
+}
+                        </code></pre>
                     </section>
                     
+                    <section>
+                        <h2>Mere anti-pattern</h2>
+                        <pre><code data-trim>
+function processData(initial) {
+  this.outer(initial, function (err, data1) {
+    data1.inner(function (err, data2) {
+      data2.nested(function (err, data3) {
+        data3.errrmagerd(data2, data3, function (err, data4) {
+          // etc.
+        });
+      });
+    });
+  });
+}
+                        </code></pre>
+                    </section>
+                </section>
+                
+                <section>
                     <section>
                         <h2>Simpel NodeJS webserver</h2>
                         <p>Eksempel taget fra NodeJS' website</p>
@@ -359,7 +393,9 @@ var server = app.listen(1337, function () {
                             <li>Templating engines (MVC)</li>
                         </ul>
                     </section>
+                
                 </section>
+                    
                 
                 <section>
 					<section>
