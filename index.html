@@ -152,24 +152,35 @@
                     
                     <section>
                         <h2>Hvad er NodeJS</h2>
-                        <p><b>TODO:</b> Udvid med mere info!</p>
                         <ul>
                             <li>Chrome's V8 JavaScript-motor</li>
-                            <li>Opbygning (event-driven, async I/O)</li>
+                            <li>Sammenkoblet med C-libraries</li>
                         </ul>
                     </section>
                     
                     <section>
-                        <h2>Hvilke fordele er der</h2>
+                        <h2>Hvilke fordele er der?</h2>
                         <p>Vi tager dem lige en for en...</p>
                     </section>
                     
                     <section>
+                        <h2>Hurtig, event-dreven arkitektur</h2>
+                        <p>
+                            Ét event-loop, der kører i V8-motoren, som så spørger ud til eksterne C-libraries, får
+                            svar igen når event-loopet kører forbi og modulet har et svar klar. &rarr; Non-blocking I/O.
+                        </p>
+                        <p>
+                            <b>Ufattelig</b> hurtigt til I/O - uden at skabe unødvendig load!
+                        </p>
+                    </section>
+                    
+                    <section>
                         <h2>Samme sprog på frontend og backend</h2>
-                        <p>Man kan som webudvikler ikke udelukke sig selv fra hverken</p>
+                        <p>Man kan som webudvikler ikke udelukke sig selv fra hverken frontend eller backend</p>
                         <ul>
-                            <li>Frontend</li>
-                            <li>Backend</li>
+                            <li>Ingen skift af kontekst</li>
+                            <li>Ingen skel imellem teams</li>
+                            <li>Fortolket sprog &rarr; Hurtig feedback</li>
                         </ul>
                     </section>
                     
@@ -201,27 +212,86 @@ messenger('Anders').sayBye();
                     </section>
                     
                     <section>
-                        <h2>Modularitet - Look-up mekanisme</h2>
-                        <p><b>TODO:</b> Vis hvordan lookup laves (omtalt index.js, node_modules etc.) </p>
+                        <h2>Modularitet - Manifest</h2>
+                        <p>En manifest-fil per modul, denne hedder <code>package.json</code>, skrevet i JSON</p>
+                        <pre><code data-trim>
+{ 
+  "name" : "some-library",
+  "main" : "./lib/some-lib.js" 
+}
+                        </code></pre>
                     </section>
                     
                     <section>
-                        <h2>NPM</h2>
+                        <h2>Modularitet - NPM</h2>
                         <ul>
-                            <li>Bruges sammen med før nævnte modul-mekanisme</li>
+                            <li>De facto pakke-manager til node</li>
                             <li class="fragment zoom-in"><code>npm install "pakkenavn"</code></li>
+                            <li class="fragment zoom-in"><code>npm install "pakkenavn" --save</code></li>
                             <li class="fragment zoom-in">Pakker findes vha. NPM repository <a href="https://www.npmjs.org/">www.npmjs.org</a></li>
+                            <li class="fragment zoom-in">Mange pakker / libraries</li>
                         </ul>
                     </section>
                     
                     <section>
-                        <h2>Hvad er ulemperne</h2>
-                        <p><b>TODO:</b> Udvid med mere info!</p>
+                        <h2>Modularitet - Look-up mekanisme</h2>
                         <ul>
-                            <li>Ingen typer (skal du bruge typer bør du vælge et andet sprog)</li>
-                            <li>Dårlig til tunge beregninger (hurtig til asynkron I/O)</li>
-                            <li>Udnytter ikke moderne CPU'er - single trådet</li>
+                            <li><code>require('util');</code> <i>Core module</i></li> 
+                            <li class="fragment zoom-in"><code>require('custom')</code> <i>samme folder (.js, .json, .node)</i></li> 
+                            <li class="fragment zoom-in"><code>require('./custom.js') <i>filen custom.js i samme folder</i></code></li> 
+                            <li class="fragment zoom-in"><code>require('/home/user/module.js')</code> <i>absolut sti</i></li> 
                         </ul>
+                    </section>
+                    
+                    <section>
+                        <h2>Modularitet - Mere lookup</h2>
+                        <p>
+                            Hvis ikke argument til <code>require('...')</code> findes i core modules, eller i <code>/</code>,
+                            <code>./</code> eller  <code>../</code> - så tjekkes der i parent-folderen (med tilføjet <i>node_modules</i>)
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h2>Modularitet - Opsummering</h2>
+                        <ul>
+                            <li>Simpel</li>
+                            <li class="fragment zoom-in">Fleksibel</li>
+                            <li class="fragment zoom-in">Mange tilgængelige libraries</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h2>Hvad er ulemperne?</h2>
+                        <p>Dem tager vi også lige, en for en...</p>
+                    </section>
+                    
+                    <section>
+                        <h2>Dynamisk programmeringssprog</h2>
+                        <p>
+                            Hvis du skal bruge statisk skrevet sprog til modellering af kompleks forretningslogik, skal
+                            du nok lede andetsteds.
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h2>Tunge beregninger</h2>
+                        <ul>
+                            <li>Arkitekturen målrettet mod at levere effektiv, asynkron I/O, på én enkelt tråd</li>
+                            <li class="fragment zoom-in">Tråd i en beregning i 10 sekunder &rarr; Dårlig performance!</li>
+                            <li class="fragment zoom-in"><b>Workaround</b> Web workers</li>
+                            <li class="fragment zoom-in"><b>Bedre løsning</b> Vælg et andet sprog til beregninger, udstil vha. REST og brug disse fra NodeJS</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h2>Multi-core CPU D.I.Y.</h2>
+                        <p><b>TODO:</b> En kerne, manuel (nginx / apache) round-robin mod flere node instanser, eksperimentel cluster modul.</p>
+                    </section>
+                    
+                    <section>
+                        <h2>Flying wedge anti-pattern</h2>
+                        <p>Callbacks</p>
+                        <p><b>TODO:</b> http://technosophos.com/2011/10/29/javascript-nodejs-and-flying-wedge-anti-pattern.html</p>
                     </section>
                     
                     <section>
