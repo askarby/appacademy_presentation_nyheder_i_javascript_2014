@@ -1,0 +1,14 @@
+{
+  "name": "httpserver",
+  "version": "0.1.0",
+  "description": "An example of how-to write a simple http server in node, in various ways",
+  "main": "express.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.9.8"
+  }
+}

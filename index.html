@@ -355,10 +355,10 @@ console.log('Server running at http://127.0.0.1:1337/');
                         <pre><code data-trim>
 var http = require('http');
 http.createServer(function (req, res) {
-  if (req.message.method === 'GET' && req.message.url === '/') { 
+  if (req.method === 'GET' && req.url === '/') { 
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end('Hello World\n');
-  } else if (req.message.method === 'GET' && req.message.url === '/other') {
+  } else if (req.method === 'GET' && req.url === '/other') {
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end('Hello Universe\n');
   }
@@ -393,9 +393,7 @@ var server = app.listen(1337, function () {
                             <li>Templating engines (MVC)</li>
                         </ul>
                     </section>
-                
                 </section>
-                    
                 
                 <section>
 					<section>
