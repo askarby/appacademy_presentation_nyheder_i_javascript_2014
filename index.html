@@ -111,32 +111,189 @@
                     </section>
                     
                     <section>
-                        <h2>HTML og JQuery</h2>
-                        <pre><code data-trim>
-                            TODO: Eksempel med HTML og inline JQuery
+                        <h2>HTML burde være nok</h2>
+                        <pre><code data-trim contenteditable>
+&lt;html&gt;
+    &lt;head&gt;...&lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;container1&quot;&gt;
+            &lt;ul&gt;&lt;/ul&gt;
+            &lt;button id="btn1"&gt;&lt;button/&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;container2&quot;&gt;
+            &lt;input id="inp1"/&gt;
+            &lt;textarea id="edt1"&gt;&lt;textarea/&gt;
+            &lt;button id="btn2"&gt;&lt;button/&gt;
+        &lt;/div&gt;
+        ...
+    &lt;/body&gt;
+&lt;/html&gt;
                         </code></pre>
                     </section>
-                    
                     <section>
-                        <h2>Det bliver værre</h2>
-                        <pre><code data-trim>
-                            TODO: Eksempel med HTML og link til ekstern JQuery
-                        </code></pre>
+                        <h2>Et unfair spørgsmål</h2>
+                        <p>... jeg viser ikke hele koden</p>
                     </section>
-                    
                     <section>
-                        <h2>Nu ved jeg ikke hvad der foregår</h2>
-                        <pre><code data-trim>
-                            TODO: Eksempel med HTML og link til ekstern, minificeret JQuery
+                        <h2>Det behøver jeg heller ikke</h2>
+                        <p>... her er de vigtige dele</p>
+                        <pre><code data-trim contenteditable>
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;script src="..." /&gt;
+        &lt;script&gt;...&lt;/script&gt;
+        ...
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;script src="..." /&gt;
+        &lt;script src="..." /&gt;
+        &lt;script&gt;...&lt;(script&gt;
+        &lt;script&gt;...&lt;/script&gt;
+        ...
+    &lt;/body&gt;
+&lt;/html&gt;
                         </code></pre>
                     </section>
-                    
                     <section>
-                        <h2>HTML og AngularJS</h2>
-                        <pre><code data-trim>
-                            TODO: Skriv eksempel med TODO-liste
+                        <h2>Det er knap så godt</h2>
+                        <p>
+                            Fordi:
+                            <ul>
+                                <li>Vi har ingen ide om hvad der foregår</li>
+                                <li>Koden er baseret på id / class-baserede selectors i <code>.js</code>-filer</li>
+                                <li><code>.js</code>-filerne kan importere andre <code>.js</code>-filer</li>
+                                <li>Det er ikke til at vedligeholde</li>
+                            </ul>
+                        </p>
+                    </section>
+				</section>
+
+                <section>
+                    <section>
+                        <h2>AngularJS "to the resque"</h2>
+                    </section>
+                    <section>
+                        <h2>Nyt HTML</h2>
+                        <pre><code data-trim contenteditable>
+&lt;html&gt;
+    &lt;head&gt;...&lt;/head&gt;
+    &lt;body ng-app="notepad" ng-controller="MainCtrl as main"&gt;
+        &lt;notelist id=&quot;container1&quot;&gt;
+            &lt;ul&gt;
+                &lt;li ng-repeat="note in notes"&gt;{{note.title}}&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;button id="btn1" ng-click="main.createNewNote()"&gt;&lt;button/&gt;
+        &lt;/notelist&gt;
+        &lt;editor id=&quot;container2&quot;&gt;
+            &lt;input id="inp1" ng-model="note.title"/&gt;
+            &lt;textarea id="edt1" ng-model="note.content"&gt;&lt;textarea/&gt;
+            &lt;button id="btn2" ng-click="main.save()"&gt;Save note&lt;button/&gt;
+        &lt;/editor&gt;
+        ...
+    &lt;/body&gt;
+&lt;/html&gt;
                         </code></pre>
                     </section>
+                    <section>
+                        <h2>Hvad vi fik var</h2>
+                        <ul>
+                            <li>Nye og custom:
+                                <ul>
+                                    <li>Elementer</li>
+                                    <li>Attributter</li>
+                                </ul>
+                            </li>
+                            <li>Som resulterer i:
+                                <ul>
+                                    <li>Markup der forklarer applikationens opførsel</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>AngularJS giver os</h2>
+                        <ul>
+                            <li>Et MVC framework</li>
+                            <li>Databinding</li>
+                            <li>Direktiver (Directives)</li>
+                            <li>Dependency injection</li>
+                            <li>Testbar kode</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>MVC Framework</h2>
+                        <ul>
+                            <li>Vores <b style="color: red;">M</b>odel er et JavaScript-objekt</li>
+                            <li>Vores <b style="color: green;">C</b>ontroller er en JavaScript-funktion</li>
+                            <li>Vores <b style="color: blue;">V</b>iew er HTML</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>MVC Framework - Forsat</h2>
+                        <p><b style="color: green;">C</b>ontrolleren er mest interessant</p>
+                        <pre><code data-trim>
+angular.controller('MainCtrl', function ($scope) {
+    $scope.friend = 'Bob';
+});
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Databinding</h2>
+                        <p>En del af HTML</p>
+                        <pre><code data-trim>
+&lt;input type="text" ng-model="friend" /&gt;
+&lt;div&gt;Vores ven hedder {{friend}}&lt;/div&gt;
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Direktiver</h2>
+                        <table>
+                            <tr>
+                                <td>Element:</td>
+                                <td><code>&lt;spinner /&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td>Attribut:</td>
+                                <td><code>&lt;div content-editable&gt;Data&lt;/div&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td>Class:</td>
+                                <td><code>&lt;div class="blink"&gt;1994 calling!&lt;/div&gt;</code></td>
+                            </tr>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Dependency Injection</h2>
+                        
+                        <pre><code data-trim>
+angular.controller('MainCtrl', function  ($scope, StorageService) {
+    $scope.friend = 'Bob';
+    this.save = function () { StorageService.save($scope.friend); };
+});
+angular.service('StorageService', function ($http) {
+    this.saveFriend(friend) {
+        // ... Use $http service ...
+    };
+});
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Testbar kode</h2>
+                        <ul>
+                            <li>Unit testing - nemt med Dependency Injection</li>
+                            <li>Protractor til End-to-End testing
+                                <ul>
+                                    <li>WebDriverJS</li>
+                                    <li>Selenium</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Tid til en demo!</h2>
+                        <p>Fordi det er begrænset hvor interessante slides er.</p>
+                    </section>
+                </section>
                 </section>
                 
                 <section>
@@ -272,7 +429,7 @@ messenger('Anders').sayBye();
                     <section>
                         <h2>Dynamisk programmeringssprog</h2>
                         <p>
-                            Hvis du skal bruge statisk skrevet sprog til modellering af kompleks forretningslogik, skal
+                            Hvis du skal bruge etstatisk skrevet sprog til modellering af kompleks forretningslogik, skal
                             du nok lede andetsteds.
                         </p>
                     </section>
