@@ -563,6 +563,58 @@ var server = app.listen(1337, function () {
                     </section>
                     
                     <section>
+                        <h2>Gulp</h2>
+                        <p>Der er 2 primære byggeværktøjer i JavaScript</p>
+                        <ul>
+                            <li><b>Grunt</b>
+                                <ul>
+                                    <li>Konfiguration af byggemiljø (brug af plugins)</li>
+                                    <li>Uoverskueligt (synes jeg)</li>
+                                </ul>
+                            </li>
+                            <li><b>Gulp</b>
+                                <ul>
+                                    <li>Koder sit byggemiljø (læsbar scripting + plugins)</li>
+                                    <li>Overskueligt og fleksibelt (synes jeg)</li>
+                                    <li>Alt er streams</li>
+                                    <li>Parallel eksekvering</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h2>Gulp - Vores mål</h2>
+                        <p>
+                            Skal "bygge" vores frontend - "bygge" som i:
+                            <ul>
+                                <li>Kombinere JavaScript filer</li>
+                                <li>Obfuskering af JavaScript</li>
+                                <li>Minificering af CSS og HTML</li>
+                            </ul>
+                        </p>
+                    </section>
+        
+                    <section>
+                        <h2>Gulp - Eksempel</h2>
+                        <ul>
+                            <li>gulpfile.js - eksekveres med kommandoen <code>gulp</code></li>
+                            <li>usemin plugin - parser kommentarer i HTML-filer</li>
+                        </ul>
+                        
+                    </section>
+                    
+                    <section>
+                        <h2>Yeoman</h2>
+                        <p>
+                            "Jeg er doven" - brug Yeoman, sammen med gulp og bower.
+                        </p>
+                        <pre><code data-trim>
+npm install -g yo gulp bower
+npm install -g generator-gulp-angular
+yo gulp-angular
+gulp serve
+                        </code></pre>
                     </section>
                 </section>
 
@@ -579,7 +631,7 @@ var server = app.listen(1337, function () {
                 </section>
 
 				<section>
-					<h1>Slut</h1>
+					<h1>Spørgsmål?</h1>
                     <h3>Udarbejdet af <a href="http://www.skarby.info">Anders Bruhn Skarby</a> / <a href="http://twitter.com/askarby">@askarby</a></h3>
                     <h3>I samarbejde med <a href="http://appacademy.dk/" style="color: #a3cf5f;">App Academy</a></h3>
 				</section>
