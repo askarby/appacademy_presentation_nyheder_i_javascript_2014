@@ -54,7 +54,7 @@
                     <ul>
                         <li>Lad være med at skrive kode af
                             <ul>
-                                <li>kodeeksempler er tilgængelige på GitHub</li>
+                                <li><a href="https://github.com/askarby/appacademy_nyheder_i_javascript_2014">github.com/askarby/appacademy_nyheder_i_javascript_2014</a></li>
                             </ul>
                         </li>
                         <li class="fragment">Vi holder en pause på 10 minutter, hvor der serveres en sandwich</li>
@@ -84,14 +84,14 @@
                     <ol>
                         <li>Frontend-udvikling med <a href="https://angularjs.org/">AngularJS</a></li>
                         <li>Backend-udvikling med <a href="http://expressjs.com/">Express</a> / <a href="http://nodejs.org/">NodeJS</a></li>
-                        <li>Udviklingsværktøjer</li>
+                        <li>Udviklingsværktøjer (<a href="http://gulpjs.com/">Gulp</a> og <a href="http://yeoman.io/">Yeoman</a>)</li>
                     </ol>
                 </section>
                 
                 <section>
                     <h2>Fremgangsmåde</h2>
                     <p class="fragment zoom-in">En blanding af slide-deck</p>
-                    <p class="fragment zoom-in">Live-kodning</p>
+                    <p class="fragment zoom-in">Live-kodning (tags i git)</p>
                     <p class="fragment zoom-in">Dialog frem og tilbage</p> 
                 </section>
                 
@@ -160,7 +160,7 @@
                             Fordi:
                             <ul>
                                 <li>Vi har ingen ide om hvad der foregår</li>
-                                <li>Koden er baseret på id / class-baserede selectors i <code>.js</code>-filer</li>
+                                <li>Koden er baseret på id / class-selectors i <code>.js</code>-filer</li>
                                 <li><code>.js</code>-filerne kan importere andre <code>.js</code>-filer</li>
                                 <li>Det er ikke til at vedligeholde</li>
                             </ul>
@@ -266,12 +266,12 @@ angular.controller('MainCtrl', function ($scope) {
                         <h2>Dependency Injection</h2>
                         
                         <pre><code data-trim>
-angular.controller('MainCtrl', function  ($scope, StorageService) {
+angular.controller('MainCtrl', function ($scope, StorageService) {
     $scope.friend = 'Bob';
     this.save = function () { StorageService.save($scope.friend); };
 });
 angular.service('StorageService', function ($http) {
-    this.saveFriend(friend) {
+    this.saveFriend = function (friend) {
         // ... Use $http service ...
     };
 });
@@ -439,7 +439,8 @@ messenger('Anders').sayBye();
                         <ul>
                             <li>Arkitekturen målrettet mod at levere effektiv, asynkron I/O, på én enkelt tråd</li>
                             <li class="fragment zoom-in">Tråd i en beregning i 10 sekunder &rarr; Dårlig performance!</li>
-                            <li class="fragment zoom-in"><b>Workaround</b> Web workers</li>
+                            <li class="fragment zoom-in"><b>Workaround</b> <code>child_proces</code>-modul (fork ny js-script eksekvering)</li>
+                            <li class="fragment zoom-in"><b>Workaround</b> Web workers (flere implementationer i npm)</li>
                             <li class="fragment zoom-in"><b>Bedre løsning</b> Vælg et andet sprog til beregninger, udstil vha. REST og brug disse fra NodeJS</li>
                         </ul>
                     </section>
@@ -481,6 +482,7 @@ function processData(initial) {
   });
 }
                         </code></pre>
+                        <p><b>Løsning:</b> Brug promises</p>
                     </section>
                 </section>
                 
@@ -551,6 +553,11 @@ var server = app.listen(1337, function () {
                         </ul>
                     </section>
                 </section>
+        
+                <section>
+                        <h2>Tid til endnu en demo!</h2>
+                        <p>Lad os kode en backend til vores post-it frontend.</p>
+                    </section>
                 
                 <section>
 					<section>
